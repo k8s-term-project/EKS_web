@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Cluster
 from .form import ClusterForm
 def index(request):
-    project_list = Cluster.objects.order_by('-create_date')
+    project_list = Cluster.objects.order_by('-project_name')
     context = {'project_list':project_list}
     return render(request, 'EKS/index.html', context)
 # Create your views here.
@@ -23,5 +23,5 @@ def createCluster(request):
         if clusterForm.is_valid():
             cluster = clusterForm.save(commit=False)
             cluster.save()
-        return redirect('')
+        return redirect('/')
 

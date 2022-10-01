@@ -6,10 +6,10 @@
 </head>
 <body>
 
-<form action="/{{ project.project_name }}" method="post">
+<form action="/create/" method="post">
     {% csrf_token %}
     {{ clusterForm.as_p }}
-    <button>클러스터 생성</button>
+    <button type="submit">클러스터 생성</button>
 </form>
 </body>
 </html>

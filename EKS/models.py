@@ -9,5 +9,5 @@ class Cluster(models.Model):
     nodes = models.IntegerField()
     vcpu = models.IntegerField()
     ram = models.IntegerField()
-    create_date = models.DateTimeField()
+    #create_date = models.DateTimeField()
 
