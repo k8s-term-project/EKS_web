@@ -6,11 +6,9 @@
 </head>
 <body>
 
-<form action="/{{ project.project_name }}" method="post">
-    <button>클러스터 생성</button>
-</form>
+<button type="button" onclick="location.href='/create' ">클러스터 생성</button>
 
-
+<h2>생성된 클러스터 리스트</h2>
 {% if project_list %}
     <ul>
     {% for project in project_list %}

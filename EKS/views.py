@@ -25,3 +25,7 @@ def createCluster(request):
             cluster.save()
         return redirect('/')
 
+def deleteCluster(request, project_name):
+    cluster = Cluster.objects.get(project_name=project_name)
+    cluster.delete()
+    return redirect('/')

@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
     path('create/', views.createCluster),
-    path('<str:project_name>/', views.detail)
+    path('<str:project_name>/delete', views.deleteCluster),
+    path('<str:project_name>/', views.detail),
 ]
