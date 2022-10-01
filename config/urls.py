@@ -19,5 +19,6 @@ from EKS import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
+    path('create/', views.createCluster),
     path('<str:project_name>/', views.detail)
 ]

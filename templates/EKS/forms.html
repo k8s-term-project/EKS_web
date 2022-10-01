@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/{{ project.project_name }}" method="post">
+    {% csrf_token %}
+    {{ clusterForm.as_p }}
+    <button>클러스터 생성</button>
+</form>
+</body>
+</html>
