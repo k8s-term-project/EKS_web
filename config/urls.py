@@ -26,4 +26,5 @@ urlpatterns = [
     path('<str:project_name>/', views.detail),
     path('user/signup', user.views.signup),
     path('user/login', user.views.login),
+    path('user/logout', user.views.logout),
 ]
