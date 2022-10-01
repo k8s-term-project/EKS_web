@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+
+import user.views
 from EKS import views
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,4 +24,6 @@ urlpatterns = [
     path('create/', views.createCluster),
     path('<str:project_name>/delete', views.deleteCluster),
     path('<str:project_name>/', views.detail),
+    path('user/signup', user.views.signup),
+    path('user/login', user.views.login),
 ]
