@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Cluster
 from .form import ClusterForm
+import os, subprocess
 
 def index(request):
     project_list = Cluster.objects.order_by('-project_name')
@@ -28,6 +29,19 @@ def createCluster(request):
             cluster = clusterForm.save(commit=False)
             cluster.email = request.user
             cluster.save()
+            data = " "
+            data += str(cluster.email)
+            data += " "
+            data += str(cluster.nodes)
+            data += " "
+            data += str(cluster.vcpu)
+            data += " "
+            data += str(cluster.ram)
+            excute = "/root/data.sh"
+            excute += data
+            print(excute)
+            subprocess.run([excute], shell=True)
+
         return redirect('/')
 
 @login_required(login_url = '/user/login')
