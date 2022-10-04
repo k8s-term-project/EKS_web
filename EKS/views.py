@@ -40,7 +40,7 @@ def createCluster(request):
             data += " "
             data += str(cluster.master_cpu)
             data += " "
-            data += str(cluster.master_ram)
+            data += str(int(cluster.master_ram)*1024)
             data += " "
             data += str(cluster.master_disk)
             data += " "
@@ -48,7 +48,7 @@ def createCluster(request):
             data += " "
             data += str(cluster.node_cpu)
             data += " "
-            data += str(cluster.node_ram)
+            data += str(int(cluster.node_ram)*1024)
             data += " "
             data += str(cluster.node_disk)
 

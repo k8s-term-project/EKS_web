@@ -68,7 +68,7 @@
       }
     </style>
 
-    
+
     <!-- Custom styles for this template -->
     <link href="{% static 'css/features.css' %}" rel="stylesheet">
   </head>
@@ -190,21 +190,19 @@
   <h1 class="visually-hidden">Features examples</h1>
 
   <div class="container px-4 py-5" id="hanging-icons">
-
     {% if not request.user.is_authenticated %}
         <h2 class="pb-2 border-bottom">Login please..</h2>
     {% endif %}
-
     {% if request.user.is_authenticated %}
       {% if project_list %}
         <h2 class="pb-2 border-bottom">My Cluster</h2>
-        {% for project in project_list %}
-          {% if request.user == project.email %}
            <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+          {% for project in project_list %}
+             {% if request.user == project.email %}
            <div class="col d-flex align-items-start">
-               <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+             <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
                 <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"/></svg>
-               </div>
+             </div>
              <div>
                <h3 class="fs-2"> {{ project.project_name }} </h3>
                 <table class="table table-striped">
@@ -238,20 +236,20 @@
                     </tr>
                   </tbody>
                 </table>
-          <a href="/{{ project.project_name }}/delete" class="btn btn-primary">Terminate</a>
-        </div>
-      </div>
+              <a href="/{{ project.project_name }}/delete" class="btn btn-primary">Terminate</a>
+             </div>
+           </div>
+                 {% endif %}
+    {% endfor %}
      </div>
-    {% endif %}
-  {% endfor %}
-        {% endif %}
-
     </div>
     {% endif %}
+    {% if not project_list %}
+       <h2 class="pb-2 border-bottom"> No cluster yet...</h2>
+    {% endif %}
 
-      {% if not project_list %}
-         <h2 class="pb-2 border-bottom"> No cluster yet...</h2>
-      {% endif %}
+  {% endif %}
+
 
   </div>
 
