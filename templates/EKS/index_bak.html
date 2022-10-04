@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if request.user.is_authenticated %}
+Login: {{ request.user }}
+<button type="button" onclick="location.href='/create' ">클러스터 생성</button>
+<button type="button" onclick="location.href='/user/logout' ">logout</button>
+
+<h2>생성한 클러스터 리스트</h2>
+    {% if project_list %}
+       <ul>
+        {% for project in project_list %}
+
+                {% if request.user == project.email %}
+               <li>
+                Project Owner: {{ project.email }}
+                Project Name: <a href="/{{ project.project_name }}/">{{ project.project_name }}</a>
+               </li>
+                 {% endif %}
+
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>프로젝트가 없습니다</p>
+    {% endif %}
+{% endif %}
+
+{% if not request.user.is_authenticated %}
+<button type="button" onclick="location.href='/user/signup' ">sign up</button>
+<button type="button" onclick="location.href='/user/login' ">sign in</button>
+<h2>생성한 클러스터 리스트</h2>
+    <p>로그인 시 조회 가능</p>
+{% endif %}
+</body>
+</html>
