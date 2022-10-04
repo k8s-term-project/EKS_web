@@ -160,27 +160,23 @@
   </symbol>
 </svg>
 <main>
-   <h1 class="visually-hidden">Headers examples</h1>
-
+  <h1 class="visually-hidden">Headers examples</h1>
   <div class="b-example-divider"></div>
-
   <div class="container">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#cpu"/></svg>
+        <h4>Elastic Kubernetes Service</h4>
       </a>
       {% if request.user.is_authenticated %}
-
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><a href="#" class="nav-link px-2 link-secondary">I'm {{ request.user }}</a></li>
       </ul>
       {% endif %}
-
       <div class="col-md-3 text-end">
-
         {% if not request.user.is_authenticated %}
-        <button type="button" class="btn btn-outline-primary me-2">Login</button>
-        <button type="button" class="btn btn-primary">Sign-up</button>
+        <button type="button" class="btn btn-outline-primary me-2"  onclick="location.href='/user/login' ">Login</button>
+        <button type="button" class="btn btn-primary"  onclick="location.href='/user/signup' ">Sign up</button>
         {% endif %}
         {% if request.user.is_authenticated %}
         <button type="button" class="btn btn-outline-primary me-2"  onclick="location.href='/create' ">Create cluster</button>
@@ -193,37 +189,69 @@
   <h1 class="visually-hidden">Features examples</h1>
 
   <div class="container px-4 py-5" id="hanging-icons">
-    <h2 class="pb-2 border-bottom">My Cluster</h2>
+
+      {% if not request.user.is_authenticated %}
+        <h2 class="pb-2 border-bottom">Login please..</h2>
+      {% endif %}
+
     {% if project_list %}
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <h2 class="pb-2 border-bottom">My Cluster</h2>
 
       {% for project in project_list %}
+        {% if request.user == project.email %}
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
 
       <div class="col d-flex align-items-start">
+
         <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
           <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"/></svg>
         </div>
         <div>
           <h3 class="fs-2"> {{ project.project_name }} </h3>
-          <li>
-            Master: {{ project.master_num }}</br>
-          </li>
-          <li>
-
-            Node: {{ project.node_num }}
-          </li>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Master</th>
+                <th scope="col">Worker</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Number</th>
+                <td>{{ project.master_num }}</td>
+                <td>{{ project.node_num }}</td>
+              </tr>
+              <tr>
+                <th scope="row">cpu</th>
+                <td>{{ project.master_cpu }}</td>
+                <td>{{ project.node_cpu }}</td>
+              </tr>
+              <tr>
+                <th scope="row">ram</th>
+                <td>{{ project.master_ram }}</td>
+                <td>{{ project.node_ram }}</td>
+              </tr>
+            </tbody>
+          </table>
 <!--          <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>-->
-          <a href="/{{ project.project_name }}" class="btn btn-primary">
-            more...
+          <a href="/{{ project.project_name }}/delete" class="btn btn-primary">
+            Terminate
           </a>
         </div>
       </div>
-
-      {% endfor %}
-
+         {% endif %}
+    {% endfor %}
       </div>
     </div>
     {% endif %}
+    {% if request.user.is_authenticated %}
+
+    {% if not project_list %}
+         <h2 class="pb-2 border-bottom"> No cluster yet...</h2>
+    {% endif %}
+    {% endif %}
+
   </div>
 
 </main>
