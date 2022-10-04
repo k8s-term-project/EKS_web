@@ -42,15 +42,18 @@ def createCluster(request):
             data += " "
             data += str(cluster.master_ram)
             data += " "
+            data += str(cluster.master_disk)
+            data += " "
             data += str(cluster.node_num)
             data += " "
             data += str(cluster.node_cpu)
             data += " "
             data += str(cluster.node_ram)
+            data += " "
+            data += str(cluster.node_disk)
 
-            excute = "/root/data.sh"
+            excute = "/root/create_instance.sh"
             excute += data
-            print(excute)
             subprocess.run([excute], shell=True)
 
         return redirect('/')

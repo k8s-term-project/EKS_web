@@ -10,7 +10,9 @@ class Cluster(models.Model):
     master_num = models.IntegerField()
     master_cpu = models.IntegerField()
     master_ram = models.IntegerField()
+    master_disk = models.IntegerField()
     node_num = models.IntegerField()
     node_cpu = models.IntegerField()
     node_ram = models.IntegerField()
+    node_disk = models.IntegerField()
 
