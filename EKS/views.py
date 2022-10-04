@@ -33,11 +33,20 @@ def createCluster(request):
             data = " "
             data += str(cluster.email)
             data += " "
-            data += str(cluster.nodes)
+            data += str(cluster.project_name)
             data += " "
-            data += str(cluster.vcpu)
+            data += str(cluster.master_num)
             data += " "
-            data += str(cluster.ram)
+            data += str(cluster.master_cpu)
+            data += " "
+            data += str(cluster.master_ram)
+            data += " "
+            data += str(cluster.node_num)
+            data += " "
+            data += str(cluster.node_cpu)
+            data += " "
+            data += str(cluster.node_ram)
+
             excute = "/root/data.sh"
             excute += data
             print(excute)
@@ -53,4 +62,3 @@ def deleteCluster(request, project_name):
     else:
         cluster.delete()
         return redirect('/')
-

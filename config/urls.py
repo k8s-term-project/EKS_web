@@ -18,6 +18,7 @@ from django.urls import path
 
 import user.views
 from EKS import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
@@ -27,4 +28,5 @@ urlpatterns = [
     path('user/signup', user.views.signup),
     path('user/login', user.views.login),
     path('user/logout', user.views.logout),
+    # path('<str:email>/', views.login_index),
 ]
