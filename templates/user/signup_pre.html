@@ -11,6 +11,10 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
 
+    
+
+    
+
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
     <style>
@@ -82,21 +86,18 @@
       <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating">
-      <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" name="password1" class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
+    <div class="form-floating">
+      <input type="password" name="password2" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password Confirmation</label>
     </div>
+
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2022-10</p>
   </form>
 </main>
 
-
-    
   </body>
 </html>

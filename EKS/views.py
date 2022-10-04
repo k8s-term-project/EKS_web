@@ -23,7 +23,8 @@ def createCluster(request):
     if request.method == "GET":
         clusterForm = ClusterForm()
         context = {'clusterForm': clusterForm}
-        return render(request, "EKS/forms.html", context)
+        return render(request, "EKS/create.html", context)
+        # return render(request, "EKS/forms.html", context)
     elif request.method == "POST":
         clusterForm = ClusterForm(request.POST)
         if clusterForm.is_valid():
