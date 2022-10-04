@@ -182,6 +182,7 @@
                 <option>16</option>
               </select>
             </div>
+
             <div class="col-md-5">
               <label for="country" class="form-label">Master node disk</label>
               <select class="form-select" name="master_disk" required>
@@ -191,6 +192,7 @@
                 <option>20</option>
               </select>
             </div>
+
             <div class="col-md-5">
               <label for="country" class="form-label">Node number</label>
               <select class="form-select" name="node_num" required>
@@ -225,19 +227,19 @@
             </div>
             <div class="col-md-5">
               <label for="country" class="form-label">Node disk</label>
-              <select class="form-select" name="master_disk" required>
+              <select class="form-select" name="node_disk" required>
                 <option>5</option>
                 <option>10</option>
                 <option>15</option>
                 <option>20</option>
               </select>
             </div>
-          </div>
 
+          </div>
           <hr class="my-4">
 
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Create!</button>
+          <button class="w-100 btn btn-primary btn-lg" type="submit"   onclick="location.href='/' ">Create!</button>
         </form>
       </div>
     </div>
@@ -245,7 +247,7 @@
 
 
 </div>
-    <script src="{% static 'assets/dist/js/bootstrap.bundle.min.js' %}"></script>
-      <script src="{% static 'form-validation.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'js/form-validation.js' %}"></script>
   </body>
 </html>
