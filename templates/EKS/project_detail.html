@@ -5,13 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-<h1>{{ project_name.project_name }}</h1>
+<h1>{{ project.project_name }}</h1>
 <div>
-    email: {{ project_name.email }}</br>
-    description: {{ project_name.description }}</br>
-    nodes: {{ project_name.nodes }}</br>
-    vcpus: {{ project_name.vcpu }}</br>
-    ram: {{ project_name.ram }}</br>
+    email: {{ project.email }}</br>
+    description: {{ project.description }}</br>
+    master_num: {{ project.master_num }}</br>
+    master_cpu: {{ project.master_cpu }}</br>
+    master_ram: {{ project.master_ram }}</br>
+    node_num: {{ project.node_num }}</br>
+    node_cpu: {{ project.node_cpu }}</br>
+    node_ram: {{ project.node_ram }}</br>
 </div>
 
 <button type="button" onclick="location.href='delete' ">클러스터 삭제</button>

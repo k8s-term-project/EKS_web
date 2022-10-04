@@ -6,6 +6,7 @@ from .models import Cluster
 from .form import ClusterForm
 import os, subprocess
 
+
 def index(request):
     project_list = Cluster.objects.order_by('-project_name')
     context = {'project_list':project_list}
@@ -14,7 +15,7 @@ def index(request):
 
 def detail(request, project_name):
     project = Cluster.objects.get(project_name=project_name)
-    context = {'project_name':project}
+    context = {'project':project}
     return render(request, 'EKS/project_detail.html', context)
 
 @login_required(login_url = '/user/login')

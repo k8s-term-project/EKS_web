@@ -15,5 +15,6 @@ class ClusterForm(forms.ModelForm):
     class Meta:
         model = Cluster
         fields = ['project_name', 'description',
-                  'nodes', 'vcpu', 'ram']
+                  'master_num', 'master_cpu', 'master_ram',
+                  'node_num', 'node_cpu', 'node_ram']
         exclude = ['email']
