@@ -54,6 +54,7 @@ def createCluster(request):
 
             excute = "/root/create_instance.sh"
             excute += data
+            print(excute)
             subprocess.run([excute], shell=True)
 
         return redirect('/')
@@ -64,5 +65,13 @@ def deleteCluster(request, project_name):
     if request.user != cluster.email:
         return redirect('/')
     else:
+        data = " "
+        data += str(cluster.project_name)
+
+        excute = "/root/delete_instance.sh"
+        excute += data
+        subprocess.run([excute], shell=True)
+
         cluster.delete()
+
         return redirect('/')
